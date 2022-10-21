@@ -1,33 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@thematho 
-thematho
-/
-BangleApps
-Public
-forked from espruino/BangleApps
-Code
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-BangleApps/apps/presentor/app.js /
-@thematho
-thematho Update app.js
-Latest commit a55aaf8 8 minutes ago
- History
- 2 contributors
-@7kasper@thematho
-472 lines (438 sloc)  13.1 KB
-
 // Presentor by 7kasper (Kasper Müller)
 // Version 3.0
 
@@ -441,8 +411,8 @@ Bangle.on('drag', function(e) {
       }
       // longer press in center
       else if (getTime() - cttl < 0.6 && e.x > g.getWidth()/4 && e.x < 3 * g.getWidth()/4 && e.y > g.getHeight() / 4 && e.y < 3 * g.getHeight() / 4) {
-        // clickMouse(MouseButton.RIGHT);
-        kb.tap(kb.KEY.LEFT, 0);
+//        clickMouse(MouseButton.RIGHT);
+         pressKey(kb.KEY.LEFT);
         console.log("click right");
       }
       cttl = 0;
@@ -460,11 +430,11 @@ Bangle.on('drag', function(e) {
         // E.showMessage('up');
       } else if(lastx > 40){
         // E.showMessage('right');
-        kb.tap(kb.KEY.RIGHT, 0);
+        //kb.tap(kb.KEY.RIGHT, 0);
         scroll(-1);
       } else if(lastx < -40){
         // E.showMessage('left');
-        kb.tap(kb.KEY.LEFT, 0);
+        //kb.tap(kb.KEY.LEFT, 0);
         scroll(1);
       } else if(lastx==0 && lasty==0 && holding == false){
         // E.showMessage('press');
@@ -477,8 +447,7 @@ Bangle.on('drag', function(e) {
       lastx = lastx + e.dx;
       lasty = lasty + e.dy;
       if (timeoutHolding == -1) {
-        kb.tap(kb.KEY.LEFT, 0);
-        // timeoutHolding = setTimeout(startHolding, 500);
+        timeoutHolding = setTimeout(startHolding, 500);
       }
     }
   }
@@ -501,17 +470,3 @@ setWatch(onBtn, (process.env.HWVERSION==2) ? BTN1 : BTN2, {repeat: true});
 
 loadSettings();
 drawMain();
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
