@@ -83,7 +83,7 @@ let mainLayout = new Layout({
     {
       type: 'txt', 
       font: '6x8', 
-      label: 'PresentorJS', 
+      label: 'Presentor', 
       valign: -1,
       halign: 0,
       col: g.theme.fg1, 
@@ -190,7 +190,7 @@ function formatTime(time, doPlus) {
 }
 
 function loadSettings() {
-  settings = require("Storage").readJSON('presentorjs.json');
+  settings = require("Storage").readJSON('presentor.json');
   for (let i = 0; i < settings.pparts.length; i++) {
     ptimers[i] = {
       active: false,
