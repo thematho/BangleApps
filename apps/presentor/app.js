@@ -296,6 +296,12 @@ NRF.on('HID', function() {
   HIDenabled = true;
 });
 
+function pressBack() {
+  // Send 'a'
+  kb.tap(kb.KEY.LEFT, 0);
+}
+
+
 function moveMouse(x,y,b,wheel,hwheel,callback) {
   if (!HIDenabled) return;
   if (!b) b = 0;
@@ -412,8 +418,8 @@ Bangle.on('drag', function(e) {
       }
       // longer press in center
       else if (getTime() - cttl < 0.6 && e.x > g.getWidth()/4 && e.x < 3 * g.getWidth()/4 && e.y > g.getHeight() / 4 && e.y < 3 * g.getHeight() / 4) {
-        clickMouse(MouseButton.BACK);
-        console.log("click right");
+        pressBack();
+        console.log("pressBack");
       }
       cttl = 0;
       lastx = 0;
@@ -430,12 +436,12 @@ Bangle.on('drag', function(e) {
         // E.showMessage('up');
       } else if(lastx > 40){
         // E.showMessage('right');
-        //kb.tap(kb.KEY.RIGHT, 0);
-        scroll(-1);
+        kb.tap(kb.KEY.RIGHT, 0);
+        // scroll(-1);
       } else if(lastx < -40){
         // E.showMessage('left');
-        //kb.tap(kb.KEY.LEFT, 0);
-        scroll(1);
+        kb.tap(kb.KEY.LEFT, 0);
+        // scroll(1);
       } else if(lastx==0 && lasty==0 && holding == false){
         // E.showMessage('press');
         clickMouse(MouseButton.LEFT);
