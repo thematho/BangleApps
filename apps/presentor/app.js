@@ -1,5 +1,6 @@
 // Presentor by 7kasper (Kasper Müller)
-// Version 3.0
+// Edited by thematho (Matias Fernandez Martinez)
+// Version 3.1
 
 const SpecialReport = new Uint8Array([
   0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
@@ -82,7 +83,7 @@ let mainLayout = new Layout({
     {
       type: 'txt', 
       font: '6x8', 
-      label: 'Presentor', 
+      label: 'PresentorJS', 
       valign: -1,
       halign: 0,
       col: g.theme.fg1, 
@@ -189,7 +190,7 @@ function formatTime(time, doPlus) {
 }
 
 function loadSettings() {
-  settings = require("Storage").readJSON('presentor.json');
+  settings = require("Storage").readJSON('presentorjs.json');
   for (let i = 0; i < settings.pparts.length; i++) {
     ptimers[i] = {
       active: false,
@@ -411,7 +412,7 @@ Bangle.on('drag', function(e) {
       }
       // longer press in center
       else if (getTime() - cttl < 0.6 && e.x > g.getWidth()/4 && e.x < 3 * g.getWidth()/4 && e.y > g.getHeight() / 4 && e.y < 3 * g.getHeight() / 4) {
-        clickMouse(MouseButton.RIGHT);
+        clickMouse(MouseButton.BACK);
         console.log("click right");
       }
       cttl = 0;
