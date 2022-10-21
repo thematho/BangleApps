@@ -1,6 +1,6 @@
 {
   "id": "presentorjs",
-  "name": "PresentorJS",
+  "name": "Presentor",
   "version": "0.08",
   "description": "Use your Bangle to present!",
   "icon": "app.png",
@@ -13,6 +13,6 @@
   "storage": [
     {"name":"presentor.app.js","url":"app.js"},
     {"name":"presentor.img","url":"app-icon.js","evaluate":true},
-    {"name":"presentorjs.json","url":"settings.json"}
+    {"name":"presentor.json","url":"settings.json"}
   ]
 }
