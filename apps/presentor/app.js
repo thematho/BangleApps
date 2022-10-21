@@ -249,7 +249,6 @@ function drawMainFrame() {
   mainLayout.RestTime.col = restTime < 0 ? '#f00' : (restTime > 0 ? '#0f0' : '#fff');
   mainLayout.render();
   // schedule a draw for the next minute
-  if (timeoutDraw != -1) clearTimeout(timeoutDraw);
   timeoutDraw = setTimeout(function() {
     timeoutDraw = -1;
     drawMainFrame();
@@ -410,7 +409,7 @@ Bangle.on('drag', function(e) {
         console.log("click left");
       }
       // longer press in center
-      else if (getTime() - cttl < 0.6 && e.x > g.getWidth()/4 && e.x < 3 * g.getWidth()/4 && e.y > g.getHeight() / 4 && e.y < 3 * g.getHeight() / 4) {
+      else if (getTime() - cttl < 1) {
 //        clickMouse(MouseButton.RIGHT);
          pressKey(kb.KEY.LEFT);
         console.log("click right");
