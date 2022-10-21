@@ -1,6 +1,5 @@
 // Presentor by 7kasper (Kasper Müller)
-// Edited by thematho (Matias Fernandez Martinez)
-// Version 3.1
+// Version 3.0
 
 const SpecialReport = new Uint8Array([
   0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
@@ -296,12 +295,6 @@ NRF.on('HID', function() {
   HIDenabled = true;
 });
 
-function pressBack() {
-  // Send 'a'
-  kb.tap(kb.KEY.LEFT, 0);
-}
-
-
 function moveMouse(x,y,b,wheel,hwheel,callback) {
   if (!HIDenabled) return;
   if (!b) b = 0;
@@ -418,8 +411,9 @@ Bangle.on('drag', function(e) {
       }
       // longer press in center
       else if (getTime() - cttl < 0.6 && e.x > g.getWidth()/4 && e.x < 3 * g.getWidth()/4 && e.y > g.getHeight() / 4 && e.y < 3 * g.getHeight() / 4) {
-        pressBack();
-        console.log("pressBack");
+        // clickMouse(MouseButton.RIGHT);
+        kb.tap(kb.KEY.LEFT, 0);
+        console.log("click right");
       }
       cttl = 0;
       lastx = 0;
@@ -436,12 +430,12 @@ Bangle.on('drag', function(e) {
         // E.showMessage('up');
       } else if(lastx > 40){
         // E.showMessage('right');
-        kb.tap(kb.KEY.RIGHT, 0);
-        // scroll(-1);
+        //kb.tap(kb.KEY.RIGHT, 0);
+        scroll(-1);
       } else if(lastx < -40){
         // E.showMessage('left');
-        kb.tap(kb.KEY.LEFT, 0);
-        // scroll(1);
+        //kb.tap(kb.KEY.LEFT, 0);
+        scroll(1);
       } else if(lastx==0 && lasty==0 && holding == false){
         // E.showMessage('press');
         clickMouse(MouseButton.LEFT);
