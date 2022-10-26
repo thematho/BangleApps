@@ -404,12 +404,12 @@ Bangle.on('drag', function(e) {
     }
     if (!e.b) {
       // short press
-      if (getTime() - cttl < 0.2) {
+      if (getTime() - cttl < 0.5) {
         clickMouse(MouseButton.LEFT);
         console.log("click left");
       }
       // longer press in center
-      else if (getTime() - cttl < 2.5) {
+      else if (getTime() - cttl < 2.0) {
 //        clickMouse(MouseButton.RIGHT);
         pressKey(kb.KEY.LEFT);
         console.log("click right");
